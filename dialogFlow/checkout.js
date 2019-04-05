@@ -1,24 +1,23 @@
 //using function.Array as args
 module.exports = function getIntent(bot, builder, params) {
 
-    let configValues = { ...params[0] }
+    // let configValues = { ...params[0] }
     let state = {
         nome: "",
         endereco: "",
         pagamento: "",
-        total: configValues.total
+        // total: configValues.total // this is the value to be read
     }
-
+    
     bot.dialog('/intent', [
-        function (session) {
+        (session) => {
             builder.Prompts.text(session, 'Ok, antes de enviar precisarei do seu Nome:')
-            console.log('!!!' + params)
         },
-        function (session, results) {
+        (session, results) => {
             state.nome = results.response
             builder.Prompts.text(session, `Certo ${state.nome} poderia informar seu endereco: `)
         },
-        function (session, results) {
+        (session, results) => {
             state.endereco = results.response
             builder.Prompts.text(session, `Como sera o pagamento? Sr. ${state.nome}`)
         },

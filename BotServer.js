@@ -18,8 +18,9 @@ var bot = new builder.UniversalBot(connector, function(session) {
 });
 
 require('./cardActionConfigs/messageBack.json')
-require('./dialogFlow/menu')(bot, builder)
+require('./cardShow/candyHeroCard')(bot, builder)
+require('./cardShow/menuHeroCard')(bot, builder)
 require('./cardShow/_drinksHeroCard')(bot, builder)
 require('./cardShow/pizzaHeroCard')(bot, builder)
-require('./dialogFlow/checkout')(bot, builder, params)
+require('./dialogFlow/checkout')(bot, builder)
 require('./dialogFlow/_welcome')(bot)

@@ -11,6 +11,10 @@ module.exports = function showMenu(bot, builder) {
         {
             title: 'Bebidas',
             goto: 'suco'
+        },
+        {
+            title: 'Doces',
+            goto: 'doce'
         }
     ]
     const novoMenu = new GetMenu
