@@ -1,0 +1,20 @@
+{
+    "name": "botTalk",
+    "version": "1.0.0",
+    "description": "",
+    "main": "botServer.js",
+    "scripts": {
+        "start": "nodemon"
+    },
+    "dependencies": {
+        "botbuilder": "3.13.1",
+        "react": "^16.8.6",
+        "restify": "8.2.0"
+    },
+    "devDependencies": {
+        "nodemon": "1.18.10"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC"
+}
