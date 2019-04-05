@@ -1,11 +1,12 @@
 //using function.Array as args
-const total = require('../cardShow/_drinksHeroCard')
 module.exports = function getIntent(bot, builder, params) {
 
+    let configValues = { ...params[0] }
     let state = {
         nome: "",
         endereco: "",
-        pagamento: ""
+        pagamento: "",
+        total: configValues.total
     }
 
     bot.dialog('/intent', [
@@ -25,15 +26,13 @@ module.exports = function getIntent(bot, builder, params) {
             state.pagamento = results.response
             session.send(
                 JSON.stringify(state)
-                // configValues.cart
-                // configValues.cart.map(item => JSON.parse(item))
             )
             session.send('A informacao esta correta?')
             builder.Prompts.text(session, `! Se a informacao estiver errada digite: REVER `)
         },
         (session, results) => {
             let info = results.response
-            if (info == 'sim' || info=='SIM') {
+            if (info == 'sim' || info == 'SIM') {
                 session.endDialog('Concluido!')
             } else if (info == 'rever' || info == 'REVER') {
                 session.beginDialog('*:/intent')

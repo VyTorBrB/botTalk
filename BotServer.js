@@ -17,9 +17,9 @@ var bot = new builder.UniversalBot(connector, function(session) {
     // session.send("Olá... Seja bem vindo!")
 });
 
-require('./dialogFlow/menu')(bot, builder)
 require('./cardActionConfigs/messageBack.json')
+require('./dialogFlow/menu')(bot, builder)
 require('./cardShow/_drinksHeroCard')(bot, builder)
 require('./cardShow/pizzaHeroCard')(bot, builder)
-require('./dialogFlow/checkout')(bot, builder)
+require('./dialogFlow/checkout')(bot, builder, params)
 require('./dialogFlow/_welcome')(bot)

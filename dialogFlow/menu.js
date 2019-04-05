@@ -1,6 +1,6 @@
 const GetMenu = require('../constructors/menuConstructor')
 module.exports = function showMenu(bot, builder) {
-    params = [
+    this.params = [
         {
             type: 'Cardapio',
             path: '/menu',

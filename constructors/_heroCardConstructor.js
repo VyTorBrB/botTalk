@@ -20,7 +20,7 @@ module.exports = class Card {
                     .text(`R$ ${obj.price}`)
                     .images([builder.CardImage.create(session, `${obj.img}`)])
                     .buttons([
-                        builder.CardAction.imBack(session, 'Item adicionado!, Voce deseja finalizar ou seguir comprando é só digitar pelo que buscas :)', 'Adicionar ao carrinho')
+                        builder.CardAction.imBack(session, `${obj.price + obj.total} Item adicionado!, Voce deseja finalizar ou seguir comprando é só digitar pelo que buscas :)`, 'Adicionar ao carrinho')
                     ])
                 )
             }
@@ -28,9 +28,6 @@ module.exports = class Card {
             msg.attachments(
                 eval(params.map(obj => cardItem(obj)))
             );
-            // configValues.cart.forEach(e => console.log(e))
-            
-            // checkout.setTotals(cartItem)
             session.send(msg).endDialog()
         }).triggerAction({ matches: configValues.regex });
     }
