@@ -1,12 +1,11 @@
 //using function.Array as args
-module.exports = function getIntent(bot, builder, params) {
 
-    let configValues = { ...params[0] }
+module.exports = function getIntent(bot, builder, params) {
     let state = {
         nome: "",
         endereco: "",
         pagamento: "",
-        total: configValues.total
+        // total: newContext.getTotal()
     }
 
     bot.dialog('/intent', [

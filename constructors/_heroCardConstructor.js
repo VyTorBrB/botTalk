@@ -1,4 +1,3 @@
-// const Checkout = require('../dialogFlow/_checkout')
 module.exports = class Card {
     constructor(bot, builder, params) {
         this.bot = bot,
@@ -6,10 +5,13 @@ module.exports = class Card {
             this.params = params
     }
 
+    getTotal(params) {
+        let configValues = { ...params[0] }
+        return configValues.total
+    }
+
     getCard(bot, builder, params) {
         let configValues = { ...params[0] }
-        let cartItem = ''
-        // let newCheckout = new Checkout
 
         bot.dialog(`${configValues.path}`, function (session) {
             var msg = new builder.Message(session);
@@ -20,7 +22,7 @@ module.exports = class Card {
                     .text(`R$ ${obj.price}`)
                     .images([builder.CardImage.create(session, `${obj.img}`)])
                     .buttons([
-                        builder.CardAction.imBack(session, `${obj.price + obj.total} Item adicionado!, Voce deseja finalizar ou seguir comprando é só digitar pelo que buscas :)`, 'Adicionar ao carrinho')
+                        builder.CardAction.imBack(session, `${obj.total += obj.price} Item adicionado!, Voce deseja finalizar ou seguir comprando é só digitar pelo que buscas :)`, 'Adicionar ao carrinho')
                     ])
                 )
             }
@@ -28,7 +30,49 @@ module.exports = class Card {
             msg.attachments(
                 eval(params.map(obj => cardItem(obj)))
             );
+            this.getTotal(params)
             session.send(msg).endDialog()
         }).triggerAction({ matches: configValues.regex });
+    }
+
+    getCheckout(bot, builder, params) {
+        let state = {
+            nome: "",
+            endereco: "",
+            pagamento: "",
+            // total: newContext.getTotal()
+        }
+    
+        bot.dialog('/intent', [
+            function (session) {
+                builder.Prompts.text(session, 'Ok, antes de enviar precisarei do seu Nome:')
+                console.log('!!!' + params)
+            },
+            function (session, results) {
+                state.nome = results.response
+                builder.Prompts.text(session, `Certo ${state.nome} poderia informar seu endereco: `)
+            },
+            function (session, results) {
+                state.endereco = results.response
+                builder.Prompts.text(session, `Como sera o pagamento? Sr. ${state.nome}`)
+            },
+            (session, results) => {
+                state.pagamento = results.response
+                session.send(
+                    JSON.stringify(state)
+                )
+                session.send('A informacao esta correta?')
+                builder.Prompts.text(session, `! Se a informacao estiver errada digite: REVER `)
+            },
+            (session, results) => {
+                let info = results.response
+                if (info == 'sim' || info == 'SIM') {
+                    session.endDialog('Concluido!')
+                } else if (info == 'rever' || info == 'REVER') {
+                    session.beginDialog('*:/intent')
+                }
+            }
+        ]
+        ).triggerAction({ matches: /^(finalizar|checar|encerrar|confirmar pedido|terminar)/i })
     }
 }
