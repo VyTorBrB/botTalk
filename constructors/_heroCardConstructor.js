@@ -1,14 +1,14 @@
-// const Checkout = require('../dialogFlow/_checkout')
 module.exports = class Card {
     constructor(bot, builder, params) {
         this.bot = bot,
             this.builder = builder,
             this.params = params
     }
-
+    // construtor do card
     getCard(bot, builder, params) {
+        // captura valores da configuracao inicial
         let configValues = { ...params[0] }
-
+        // inicia o dialogo
         bot.dialog(`${configValues.path}`, function (session) {
             var msg = new builder.Message(session);
 
@@ -18,16 +18,15 @@ module.exports = class Card {
                     .text(`R$ ${obj.price}`)
                     .images([builder.CardImage.create(session, `${obj.img}`)])
                     .buttons([
-                        builder.CardAction.imBack(session, `${obj.title} adicionado!, Voce deseja finalizar ou seguir comprando é só digitar pelo que buscas :)`, 'Adicionar ao carrinho')
-                        // !onClick event must add the current obj.price to the configValues.total(configValues.total += obj.price)!
+                        builder.CardAction.postBack(session, `${obj.id}`, 'Adicionar ao carrinho')
                     ])
                 )
             }
             msg.attachmentLayout(builder.AttachmentLayout.carousel)
             msg.attachments(
+                // executa o codigo JS contido dentro da propria chamada de eval()
                 eval(params.map(obj => cardItem(obj)))
-            );
-            //!in here before end the dialog is where i want to update the configValues.total so i can show it in the -> Checkout module
+                );
             session.send(msg).endDialog()
         }).triggerAction({ matches: configValues.regex });
     }

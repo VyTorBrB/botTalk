@@ -17,10 +17,12 @@ var bot = new builder.UniversalBot(connector, function(session) {
     // session.send("Olá... Seja bem vindo!")
 });
 
-require('./cardActionConfigs/messageBack.json')
+// cart items REGEX
+require('./dialogFlow/cartItems/idSucoDeLaranja')(bot, builder)
+////////////////////////////////////////////////////////////////
+// require ('./dialogFlow/checkout')
 require('./cardShow/candyHeroCard')(bot, builder)
 require('./cardShow/menuHeroCard')(bot, builder)
 require('./cardShow/_drinksHeroCard')(bot, builder)
 require('./cardShow/pizzaHeroCard')(bot, builder)
-require('./dialogFlow/checkout')(bot, builder)
 require('./dialogFlow/_welcome')(bot)
