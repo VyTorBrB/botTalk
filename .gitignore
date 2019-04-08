@@ -1,2 +1,2 @@
-node_modules
-FAP01.bot
+/node_modules
+*.bot
