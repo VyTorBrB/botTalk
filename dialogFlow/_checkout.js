@@ -1,5 +1,9 @@
-module.exports = function checkout(bot, builder, cartId) {
-    let total = cartId.total.reduce((i) => i += i)
+module.exports = function checkout(bot, builder, cartId, arr) {
+    let total = cartId.total.reduce((i) => i += i) // total de cada item
+    // let selectedTotal = arr.map(obj => obj.total) // seleciona todas as propriedades total: [] de cada obj
+    // let totals = selectedTotal.map(i => {
+    //     if (!i) { return i.reduce(i => i += i) }
+    // }).reduce(i => i += i) tentativa de somar valores de cartID`s diferentes - !Not Working!
     const state = {
         nome: "",
         endereco: "",

@@ -8,7 +8,6 @@
     },
     "dependencies": {
         "botbuilder": "3.13.1",
-        "react": "^16.8.6",
         "restify": "8.2.0"
     },
     "devDependencies": {

@@ -1,3 +1,5 @@
+[![npm version](https://badge.fury.io/js/nodemon.svg)](https://badge.fury.io/js/nodemon)
+
 <strong>Setup</strong>
 <ol>
 <li>Instalar as deps com npm i </li>

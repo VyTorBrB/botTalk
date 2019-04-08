@@ -96,12 +96,12 @@ module.exports = function (bot, builder) {
         }
     ]
     const createRoutes = cartId => {
-        cartId.map(obj => {
+        cartId.map((obj, i , arr) => {
             // if (!obj.total) {
             //     obj.total.reduce(i => i += i)
             // }
             const newtotal = new total
-            newtotal.getTotals(bot, builder, obj)
+            newtotal.getTotals(bot, builder, obj, arr)
         })
     }
     createRoutes(cartId)
