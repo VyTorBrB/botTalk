@@ -1,9 +1,8 @@
 <strong>Setup</strong>
-<br/>
 <ol>
-<li> 1 - Instalar as deps com npm i </li>
-<li> 2 - Inicializar o server com npm start </li>
-<li> 3 - depois de executar 1 vez ate o final no Bot Emulator Framework e recomendado que reinicie o servidor atraves do comando "rs" no prompt </li>
+<li>Instalar as deps com npm i </li>
+<li>Inicializar o server com npm start </li>
+<li>depois de executar 1 vez ate o final no Bot Emulator Framework e recomendado que reinicie o servidor atraves do comando "rs" no prompt </li>
 </ol>
 <br/>
 <strong>Inserindo items</strong>
