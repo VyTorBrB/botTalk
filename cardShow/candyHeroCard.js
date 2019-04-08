@@ -1,6 +1,6 @@
 const Card = require('../constructors/_heroCardConstructor')
 module.exports = function (bot, builder) {
-    this.params = [
+    const params = [
         {
             id: 'cd01',
             path: '/doces',

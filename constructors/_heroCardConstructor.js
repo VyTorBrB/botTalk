@@ -6,7 +6,7 @@ module.exports = class Card {
     }
     // construtor do card
     getCard(bot, builder, params) {
-        // captura valores da configuracao inicial
+        // captura valores da configuracao inicial contidos na primeira posicao do array `params`
         let configValues = { ...params[0] }
         // inicia o dialogo
         bot.dialog(`${configValues.path}`, function (session) {

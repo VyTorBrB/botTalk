@@ -18,9 +18,9 @@ var bot = new builder.UniversalBot(connector, function(session) {
 });
 
 // cart items REGEX
-require('./dialogFlow/cartItems/idSucoDeLaranja')(bot, builder)
+require('./dialogFlow/cartItems')(bot, builder)
 ////////////////////////////////////////////////////////////////
-// require ('./dialogFlow/checkout')
+require ('./dialogFlow/_checkout')
 require('./cardShow/candyHeroCard')(bot, builder)
 require('./cardShow/menuHeroCard')(bot, builder)
 require('./cardShow/_drinksHeroCard')(bot, builder)

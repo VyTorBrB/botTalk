@@ -1,4 +1,4 @@
-const checkout = require('../dialogFlow/checkout')
+const checkout = require('../dialogFlow/_checkout')
 module.exports = class Total {
     constructor(bot, builder, cartID) {
         this.bot = bot,
@@ -8,17 +8,16 @@ module.exports = class Total {
 
     getTotals(bot, builder, cartID) {
         // cria o dialogo para finalizar ou continar comprando
-        const newCheckout = new checkout
         bot.dialog(`/${cartID.id}`,
             [
                 function (session) {
+                    cartID.total.push(cartID.price)
                     builder.Prompts.text(session, `${cartID.title} adicionado!, Voce deseja finalizar ou seguir comprando é só digitar pelo que buscas :)`)
                 },
                 function (session, results) {
                     if (results.response == 'finalizar' || results.response == 'FINALIZAR') {
-                        cartID.total.push(cartID.price)
-                        newCheckout.getCheckout(bot, builder, cartID)
-                        return session.beginDialog('*:/checkout')
+                        checkout(bot, builder, cartID)
+                        session.beginDialog(`*:/checkout`)
                     } else {
                         return session.endDialog()
                     }

@@ -15,7 +15,7 @@ module.exports = class GetMenu {
                 return (new builder.HeroCard(session)
                     .buttons([
                         builder.CardAction.postBack(session, `${obj.goto}`, `${obj.title}`)
-                            // .url(`http://localhost:3978/api/messages${obj.goto}`)
+                         // .url(`http://localhost:3978/api/messages${obj.goto}`)
                         // builder.CardAction.Payment(session)
                     ])
                 )
