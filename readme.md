@@ -8,7 +8,8 @@
 <strong>Inserindo items</strong>
 <p>
     1.1- Para inserir um novo item de uma categoria ja existente:
-        criar um novo {} e inserir as propriedades (id, title, price, img)
+       - criar um novo {} e inserir as propriedades (id, title, price, img)
+
     1.2- Para inserir um item em uma nova categoria: 
-        criar uma estrutura similar as existentes no diretorio ./cardShow e inserir no {} como um primeiro item as propriedades (id, title, img, price, path, regex, type[opicional]) e para inserir novos items nessa mesma categoria basta seguir o passo descrito no item 1.1 dessa mesma sessao.
+       - criar uma estrutura similar as existentes no diretorio ./cardShow e inserir no {} como um primeiro item as propriedades (id, title, img, price, path, regex, type[opicional]) e para inserir novos items nessa mesma categoria basta seguir o passo descrito no item 1.1 dessa mesma sessao.
 </p>
